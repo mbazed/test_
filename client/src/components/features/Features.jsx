@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { BsBox } from 'react-icons/bs';
 

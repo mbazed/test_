@@ -22,31 +22,15 @@ function App() {
                 <Header />
                 <Routes>
                         <Route path='/' Component={Home} />
-                        {/* <Route path='/features' Component={Features} /> */}
-                        {/* <Features/> */}
-
-                </Routes>
-                <Features />
-                <Routes>
                         <Route path='/government' Component={Government} />
                         <Route path='/register' Component={Register} />
-                </Routes>
-                <Routes>
                         <Route path='/rms' Component={Rms} />
                         <Route path='/supplyrms' Component={SupplyRm} />
                         <Route path='/denyrms' Component={DenyRm} />
-                </Routes>
-                <Routes>
                         <Route path='/manufacturers' Component={Manufacturer} />
                         <Route path='/medicineManufacture' Component={ManufacturerMed} />
-                </Routes>
-                <Routes>
                         <Route path='/distributors' Component={Distributors} />
-                </Routes>
-                <Routes>
                         <Route path='/retailers' Component={Retailers} />
-                </Routes> 
-                <Routes>
                         <Route path='/track' Component={Tracker} />
                 </Routes> 
                 </div>
