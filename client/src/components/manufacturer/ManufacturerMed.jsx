@@ -28,7 +28,7 @@ const ManufacturerMed = () => {
 
     return (
         <div>
-            <h1>Manufacture Medicine</h1>
+            <h1 >Manufacture Medicine</h1>
             <div className="flex ">
                 <div className="w-1/2">
                     <div className="p-16">

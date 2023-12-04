@@ -22,7 +22,7 @@ const Rms = () => {
 
         const handleTrackerClick = () => {
                 // Navigate to the Register component when clicking on "Register Stakeholders"
-                navigate('/tracking');
+                navigate('/track');
         };
         
 
@@ -43,7 +43,7 @@ const Rms = () => {
                                         </div>
                                         <button className="text-xl font-bold mb-2 h-32 p-11 text-white bg-sky-700 text-center"><a href='/'>Insufficient Raw Materials</a></button>
                                 </div>
-                                <div onClick={handleDrmsClick} className="cursor-pointer bg-white p-6 rounded-lg shadow-md flex flex-col justify-center h-80 ">
+                                <div onClick={handleTrackerClick} className="cursor-pointer bg-white p-6 rounded-lg shadow-md flex flex-col justify-center h-80 ">
                                         <div className="overflow-hidden">
                                                 <img src={trackMedicine} alt="manufacturing" />
                                         </div>
