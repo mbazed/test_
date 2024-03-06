@@ -14,7 +14,7 @@ const Manufacturer = () => {
 
         const handleTrackerClick = () => {
                 // Navigate to the Register component when clicking on "Register Stakeholders"
-                      navigate('/tracking');
+                      navigate('/track');
         };
 
   return (

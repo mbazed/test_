@@ -2,7 +2,6 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header.jsx'
 import Home from './components/home/Home.jsx'
-import Features from './components/features/Features.jsx';
 import Manufacturer from './components/stakeholders/Manufacturer.jsx';
 import Retailers from './components/stakeholders/Retailers.jsx';
 import Rms from './components/stakeholders/Rms.jsx';
@@ -13,7 +12,9 @@ import Tracker from './components/tracker.jsx';
 import ManufacturerMed from './components/manufacturer/ManufacturerMed.jsx';
 import SupplyRm from './components/RMS/SupplyRm.jsx';
 import DenyRm from './components/RMS/DenyRm.jsx';
-
+import Distribute from './components/Distributor/Distribute.jsx';
+import Sell from './components/Retailer/Sell.jsx';
+import Order from './components/Retailer/Order.jsx';
 
 function App() {
   return (
@@ -30,7 +31,10 @@ function App() {
                         <Route path='/manufacturers' Component={Manufacturer} />
                         <Route path='/medicineManufacture' Component={ManufacturerMed} />
                         <Route path='/distributors' Component={Distributors} />
+                        <Route path='/distribute' Component={Distribute} />
                         <Route path='/retailers' Component={Retailers} />
+                        <Route path='/sell' Component={Sell}  />
+                        <Route path='/order' Component={Order} />
                         <Route path='/track' Component={Tracker} />
                 </Routes> 
                 </div>
