@@ -1,11 +1,11 @@
 import { useState,useEffect } from 'react';
 import Web3 from "web3";
 import SupplyChainABI from "../artifacts/PharmaTrust.json"
-import { useHistory, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
 
-        const useNavigate = useNavigate()
+        const navigate = useNavigate()
         useEffect(() => {
             loadWeb3();
             loadBlockchaindata();
@@ -19,6 +19,10 @@ const Register = () => {
         const [industry, setIndustry] = useState('');
         const [wallet, setWallet] = useState('');
         const [license, setLicense] = useState('');
+        const [RMS, setRMS] = useState();
+        const [MAN, setMAN] = useState();
+        const [DIS, setDIS] = useState();
+        const [RET, setRET] = useState();
 
         const handleName = (e) => {
                 setName(e.target.value);
@@ -52,9 +56,50 @@ const Register = () => {
                     );
                 }
         };
-        const loadBlockchaindata =async =>{
-                
-        }
+        
+        const loadBlockchaindata = async () => {
+                setloader(true);
+                const web3 = window.web3;
+                const accounts = await web3.eth.getAccounts();
+                const account = accounts[0];
+                setCurrentaccount(account);
+                const networkId = await web3.eth.net.getId();
+                const networkData = SupplyChainABI.networks[networkId];
+                if (networkData) {
+                    const supplychain = new web3.eth.Contract(SupplyChainABI.abi, networkData.address);
+                    setSupplyChain(supplychain);
+                    var i;
+                    const rmsCtr = await supplychain.methods.rmsCount().call();
+                    const rms = {};
+                    for (i = 0; i < rmsCtr; i++) {
+                        rms[i] = await supplychain.methods.RMS(i + 1).call();
+                    }
+                    setRMS(rms);
+                    const manCtr = await supplychain.methods.manCount().call();
+                    const man = {};
+                    for (i = 0; i < manCtr; i++) {
+                        man[i] = await supplychain.methods.MAN(i + 1).call();
+                    }
+                    setMAN(man);
+                    const disCtr = await supplychain.methods.distCount().call();
+                    const dis = {};
+                    for (i = 0; i < disCtr; i++) {
+                        dis[i] = await supplychain.methods.DIST(i + 1).call();
+                    }
+                    setDIS(dis);
+                    const retCtr = await supplychain.methods.phCount().call();
+                    const ret = {};
+                    for (i = 0; i < retCtr; i++) {
+                        ret[i] = await supplychain.methods.RET(i + 1).call();
+                    }
+                    setRET(ret);
+                    setloader(false);
+                }
+                else {
+                    window.alert('The smart contract is not deployed to current network')
+                }
+            }
+
         const handleRegistration = async () => {
                 try {
                     // Determine which option is selected
@@ -175,7 +220,94 @@ const Register = () => {
                                 </div>
                         </div>
                         <button className='border-4 border-green-400 bg-white text-green-400 px-6 py-3 rounded-md mt-8 hover:bg-green-300 hover:text-white transition-all duration-300 text-3xl font-bold' onSubmit={handleRegistration}>Register</button>
+                        <div className="my-8" >
+                                <h4 className="text-lg font-semibold mb-2">Raw Material Suppliers:</h4>
+                                <table className="w-full table-auto border-collapse border border-gray-200">
+                                <thead>
+                                        <tr className="bg-gray-100">
+                                        <th className="border border-gray-200 px-4 py-2">Name</th>
+                                        <th className="border border-gray-200 px-4 py-2">License ID</th>
+                                        <th className="border border-gray-200 px-4 py-2">Ethereum Address</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        {RMS && Object.keys(RMS).map((key) => (
+                                        <tr key={key} className={key % 2 === 0 ? "bg-gray-50" : ""}>
+                                                <td className="border border-gray-200 px-4 py-2">{RMS[key].name}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{RMS[key].place}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{RMS[key].addr}</td>
+                                        </tr>
+                                        ))}
+                                </tbody>
+                                </table>
+                        </div>
 
+                        {/* Manufacturers table */}
+                        <div className="my-8">
+                                <h4 className="text-lg font-semibold mb-2">Manufacturers:</h4>
+                                <table className="w-full table-auto border-collapse border border-gray-200">
+                                <thead>
+                                        <tr className="bg-gray-100">
+                                        <th className="border border-gray-200 px-4 py-2">Name</th>
+                                        <th className="border border-gray-200 px-4 py-2">License ID</th>
+                                        <th className="border border-gray-200 px-4 py-2">Ethereum Address</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        {MAN && Object.keys(MAN).map((key) => (
+                                        <tr key={key} className={key % 2 === 0 ? "bg-gray-50" : ""}>
+                                                <td className="border border-gray-200 px-4 py-2">{MAN[key].name}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{MAN[key].place}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{MAN[key].addr}</td>
+                                        </tr>
+                                        ))}
+                                </tbody>
+                                </table>
+                        </div>
+                        <div className="my-8">
+                                <h4 className="text-lg font-semibold mb-2">Distributors:</h4>
+                                <table className="w-full table-auto border-collapse border border-gray-200">
+                                <thead>
+                                        <tr className="bg-gray-100">
+                                        <th className="border border-gray-200 px-4 py-2">Name</th>
+                                        <th className="border border-gray-200 px-4 py-2">License ID</th>
+                                        <th className="border border-gray-200 px-4 py-2">Ethereum Address</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        {DIS && Object.keys(DIS).map((key) => (
+                                        <tr key={key} className={key % 2 === 0 ? "bg-gray-50" : ""}>
+                                                <td className="border border-gray-200 px-4 py-2">{DIS[key].name}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{DIS[key].place}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{DIS[key].addr}</td>
+                                        </tr>
+                                        ))}
+                                </tbody>
+                                </table>
+                        </div>
+
+                        {/* Retailers table */}
+                        <div className="my-8">
+                                <h4 className="text-lg font-semibold mb-2">Retailers:</h4>
+                                <table className="w-full table-auto border-collapse border border-gray-200">
+                                <thead>
+                                        <tr className="bg-gray-100">
+                                        <th className="border border-gray-200 px-4 py-2">Name</th>
+                                        <th className="border border-gray-200 px-4 py-2">License ID</th>
+                                        <th className="border border-gray-200 px-4 py-2">Ethereum Address</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        {RET && Object.keys(RET).map((key) => (
+                                        <tr key={key} className={key % 2 === 0 ? "bg-gray-50" : ""}>
+                                                <td className="border border-gray-200 px-4 py-2">{RET[key].name}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{RET[key].place}</td>
+                                                <td className="border border-gray-200 px-4 py-2">{RET[key].addr}</td>
+                                        </tr>
+                                        ))}
+                                </tbody>
+                                </table>
+                        </div>
                 </div>
         );
 }
