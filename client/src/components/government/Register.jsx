@@ -9,7 +9,21 @@ const Register = () => {
         useEffect(() => {
             loadWeb3();
             loadBlockchaindata();
+
+            // Listen for account changes in MetaMask
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+
+        // Cleanup function to remove the event listener
+        return () => {
+            window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+                };
         }, [])
+
+        const handleAccountsChanged = (accounts) => {
+                // Reload the page when the connected account changes
+                window.location.reload();
+        };
+
         const [currentaccount, setCurrentaccount] = useState("");
         const [loader, setloader] = useState(true);
         const [SupplyChain, setSupplyChain] = useState();
@@ -64,7 +78,9 @@ const Register = () => {
                 const account = accounts[0];
                 setCurrentaccount(account);
                 const networkId = await web3.eth.net.getId();
+                console.log(networkId);
                 const networkData = PharmaTrustABI.networks[networkId];
+                console.log(networkData);
                 if (networkData) {
                     const supplychain = new web3.eth.Contract(PharmaTrustABI.abi, networkData.address);
                     setSupplyChain(supplychain);
@@ -134,6 +150,7 @@ const Register = () => {
                 // Handle successful registration
                 console.log("Raw Material Supplier registered:", receipt);
                 // Optionally, provide feedback to the user (e.g., show a success message)
+                window.location.reload();
             };
             
             const registerManufacturer = async () => {
@@ -142,6 +159,7 @@ const Register = () => {
                 // Handle successful registration
                 console.log("Manufacturer registered:", receipt);
                 // Optionally, provide feedback to the user (e.g., show a success message)
+                window.location.reload();
             };
             
             const registerDistributor = async () => {
@@ -150,6 +168,7 @@ const Register = () => {
                 // Handle successful registration
                 console.log("Distributor registered:", receipt);
                 // Optionally, provide feedback to the user (e.g., show a success message)
+                window.location.reload();
             };
             
             const registerRetailer = async () => {
@@ -158,6 +177,7 @@ const Register = () => {
                 // Handle successful registration
                 console.log("Retailer registered:", receipt);
                 // Optionally, provide feedback to the user (e.g., show a success message)
+                window.location.reload();
             };
             
         
@@ -219,7 +239,7 @@ const Register = () => {
                                         </div>
                                 </div>
                         </div>
-                        <button className='border-4 border-green-400 bg-white text-green-400 px-6 py-3 rounded-md mt-8 hover:bg-green-300 hover:text-white transition-all duration-300 text-3xl font-bold' onSubmit={handleRegistration}>Register</button>
+                        <button className='border-4 border-green-400 bg-white text-green-400 px-6 py-3 rounded-md mt-8 hover:bg-green-300 hover:text-white transition-all duration-300 text-3xl font-bold' onClick={handleRegistration}>Register</button>
                         <div className="my-8" >
                                 <h4 className="text-lg font-semibold mb-2">Raw Material Suppliers:</h4>
                                 <table className="w-full table-auto border-collapse border border-gray-200">
