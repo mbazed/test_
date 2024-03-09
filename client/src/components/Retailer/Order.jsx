@@ -7,8 +7,21 @@ const Order = () => {
         useEffect(() => {
             loadWeb3();
             loadBlockchaindata();
+
+               // Listen for account changes in MetaMask
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+
+        // Cleanup function to remove the event listener
+        return () => {
+            window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+                };
         }, [])
 
+        const handleAccountsChanged = (accounts) => {
+                // Reload the page when the connected account changes
+                window.location.reload();
+        };
+        
         const [currentaccount, setCurrentaccount] = useState("");
         const [loader, setloader] = useState(true);
         const [SupplyChain, setSupplyChain] = useState();
@@ -45,7 +58,7 @@ const Order = () => {
                     setSupplyChain(supplychain);
                     var i;
                     const medCtr = await supplychain.methods.medicineCount().call();
-                    const med = {};
+                    const med = [];
                     const medStage = [];
                     for (i = 0; i < medCtr; i++) {
                         med[i] = await supplychain.methods.medAvailable(i + 1).call();
@@ -69,11 +82,10 @@ const Order = () => {
         };
 
         const handleDoe = (e) => {
-                console.log(e.target.value);
-                let newDate = new Date(e.target.value ).toDateString()
-                console.log(newDate);
+                const newDate = e.target.value;
+                console.log("New Date:", newDate);
                 setDoe(newDate);
-        };
+        }; 
 
         const handleDescription = (e) => {
                 setDescription(e.target.value);
@@ -91,6 +103,7 @@ const Order = () => {
                 catch (err) {
                     alert("An error occured!!!")
                 }
+                window.location.reload();
         }     
 
 
@@ -137,7 +150,7 @@ const Order = () => {
                         </div>
                         </div>
                 </div>    
-                <button className='bg-blue-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-blue-600 text-3xl' onSubmit={handlerSubmitMED}>Order</button>  
+                <button className='bg-blue-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-blue-600 text-3xl' onClick={handlerSubmitMED}>Order</button>  
                 <h5 className="text-3xl mt-8">Ordered Medicines:</h5>
                 <table className="w-full mt-4 border border-gray-200">
                         <thead>
@@ -152,7 +165,7 @@ const Order = () => {
                         {MED && MED.map((med, index) => (
                                 <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : ''}>
                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{med.name}</td>
-                                <td className="border border-gray-200 px-4 py-2 text-2xl">{med.doe}</td>
+                                <td className="border border-gray-200 px-4 py-2 text-2xl">{med.expDate}</td>
                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{med.description}</td>
                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MedStage[index]}</td>
                                 </tr>
