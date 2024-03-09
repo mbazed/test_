@@ -74,7 +74,7 @@ const Distribute = () => {
         const handlerDistribution = async (event) => {
                 event.preventDefault();
                 try {
-                    var reciept = await Data.methods.Distribute(ID).send({ from: currentaccount });
+                    var reciept = await Data.methods.Distribute(medicineID).send({ from: currentaccount });
                     if (reciept) {
                         loadBlockchaindata();
                     }

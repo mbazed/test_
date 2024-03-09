@@ -73,7 +73,7 @@ const SupplyRm = () => {
     const handlerSubmitRMSsupply = async (event) => {
         event.preventDefault();
         try {
-            var reciept = await Data.methods.RMSsupply(ID).send({ from: currentaccount });
+            var reciept = await Data.methods.RMSsupply(medicineID).send({ from: currentaccount });
             if (reciept) {
                 loadBlockchaindata();
             }

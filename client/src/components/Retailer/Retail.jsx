@@ -72,7 +72,7 @@ const Retail = () => {
         const handlerRetailMedicine = async (event) => {
                 event.preventDefault();
                 try {
-                var reciept = await Data.methods.Retail(ID).send({ from: currentaccount });
+                var reciept = await Data.methods.Retail(medicineID).send({ from: currentaccount });
                 if (reciept) {
                         loadBlockchaindata();
                 }

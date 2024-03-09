@@ -73,7 +73,7 @@ const DenyRm = () => {
         const handlerDenyRMSsupply = async (event) => {
                 event.preventDefault();
                 try {
-                        var reciept = await Data.methods.deniedByRMS(ID).send({ from: currentaccount });
+                        var reciept = await Data.methods.deniedByRMS(medicineID).send({ from: currentaccount });
                         if (reciept) {
                                 loadBlockchaindata();
                         }

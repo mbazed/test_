@@ -74,7 +74,7 @@ const ManufacturerMed = () => {
         const handlerSubmitManufacturing = async (event) => {
                 event.preventDefault();
                 try {
-                    var reciept = await Data.methods.Manufacturing(ID).send({ from: currentaccount });
+                    var reciept = await Data.methods.Manufacturing(medicineID).send({ from: currentaccount });
                     if (reciept) {
                         loadBlockchaindata();
                     }

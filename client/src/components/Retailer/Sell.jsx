@@ -73,7 +73,7 @@ const Sell = () => {
         const handlerSellMedicine = async (event) => {
                 event.preventDefault();
                 try {
-                var reciept = await Data.methods.sold(ID).send({ from: currentaccount });
+                var reciept = await Data.methods.sold(medicineID).send({ from: currentaccount });
                 if (reciept) {
                         loadBlockchaindata();
                 }
