@@ -15,6 +15,7 @@ import DenyRm from './components/RMS/DenyRm.jsx';
 import Distribute from './components/Distributor/Distribute.jsx';
 import Sell from './components/Retailer/Sell.jsx';
 import Order from './components/Retailer/Order.jsx';
+import Retail from './components/Retailer/Retail.jsx';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
                         <Route path='/distributors' Component={Distributors} />
                         <Route path='/distribute' Component={Distribute} />
                         <Route path='/retailers' Component={Retailers} />
+                        <Route path='/retail' Component={Retail}/>
                         <Route path='/sell' Component={Sell}  />
                         <Route path='/order' Component={Order} />
                         <Route path='/track' Component={Tracker} />

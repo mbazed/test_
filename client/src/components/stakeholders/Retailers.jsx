@@ -9,12 +9,13 @@ const Retailers = () => {
         const handleSellClick = () => {
                       navigate('/sell');
         };
-
+        const handleRetailClick = () => {
+                navigate('/retail');
+        };
         const handleOrderClick = () => {
                 navigate('/order');
         };
         const handleTrackerClick = () => {
-                
                       navigate('/track');
         };
 
@@ -25,6 +26,10 @@ const Retailers = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div onClick={handleOrderClick} className="cursor-pointer bg-white p-6 rounded-lg shadow-md flex flex-col justify-center h-80">
           <h2 className="text-xl font-bold mb-2 h-32 p-11 text-white bg-sky-700 text-center">Order Medicines</h2>
+          <p className="mb-0">fbnwjehbgfvjhsebgjksb</p>
+        </div>
+        <div onClick={handleRetailClick} className="cursor-pointer bg-white p-6 rounded-lg shadow-md flex flex-col justify-center h-80">
+          <h2 className="text-xl font-bold mb-2 h-32 p-11 text-white bg-sky-700 text-center">Retail Medicines</h2>
           <p className="mb-0">fbnwjehbgfvjhsebgjksb</p>
         </div>
         <div onClick={handleSellClick} className="cursor-pointer bg-white p-6 rounded-lg shadow-md flex flex-col justify-center h-80">

@@ -1,9 +1,89 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import Web3 from "web3";
+import PharmaTrustABI from "../artifacts/PharmaTrust.json"
 
 const Distribute = () => {
 
         const [medicineID, setMedicineID] = useState('');
         const [description, setDescription] = useState('');
+        const [currentaccount, setCurrentaccount] = useState("");
+        const [loader, setloader] = useState(true);
+        const [Data, setData] = useState();
+        const [MED, setMED] = useState();
+        const [MedStage, setMedStage] = useState();
+        const [ID, setID] = useState();
+    
+        useEffect(() => {
+            loadWeb3();
+            loadBlockchaindata();
+    
+            // Listen for account changes in MetaMask
+            window.ethereum.on('accountsChanged', handleAccountsChanged);
+    
+            // Cleanup function to remove the event listener
+            return () => {
+                    window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+                    };
+            }, [])
+    
+            const handleAccountsChanged = (accounts) => {
+                    // Reload the page when the connected account changes
+                    window.location.reload();
+            };
+    
+        const loadWeb3 = async () => {
+            if (window.ethereum) {
+                window.web3 = new Web3(window.ethereum);
+                await window.ethereum.enable();
+            } else if (window.web3) {
+                window.web3 = new Web3(window.web3.currentProvider);
+            } else {
+                window.alert(
+                    "Non-Ethereum browser detected. You should consider trying MetaMask!"
+                );
+            }
+        };
+        const loadBlockchaindata = async () => {
+            setloader(true);
+            const web3 = window.web3;
+            const accounts = await web3.eth.getAccounts();
+            const account = accounts[0];
+            setCurrentaccount(account);
+            const networkId = await web3.eth.net.getId();
+            const networkData = PharmaTrustABI.networks[networkId];
+            if (networkData) {
+                const contract = new web3.eth.Contract(PharmaTrustABI.abi, networkData.address);
+                setData(contract);
+                var i;
+                const medCtr = await contract.methods.medicineCount().call();
+                const med = {};
+                const medStage = [];
+                for (i = 0; i < medCtr; i++) {
+                    med[i] = await contract.methods.medAvailable(i + 1).call();
+                    medStage[i] = await contract.methods.showStage(i + 1).call();
+                }
+                setMED(med);
+                setMedStage(medStage);
+                setloader(false);
+            }
+            else {
+                window.alert('The smart contract is not deployed to current network')
+            }
+        }
+    
+        const handlerDistribution = async (event) => {
+                event.preventDefault();
+                try {
+                    var reciept = await Data.methods.Distribute(ID).send({ from: currentaccount });
+                    if (reciept) {
+                        loadBlockchaindata();
+                    }
+                }
+                catch (err) {
+                    alert("An error occured!!!")
+                }
+                window.location.reload();
+        }
 
         const handleMedicineID = (e) => {
                 setMedicineID(e.target.value);
@@ -41,7 +121,7 @@ const Distribute = () => {
                                         />
                         </div>
                 </div>
-                <button className='bg-blue-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-blue-600 text-3xl'>Distribute</button>      
+                <button className='bg-blue-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-blue-600 text-3xl' onClick={handlerDistribution}>Distribute</button>      
         </div>
   )
 }
