@@ -21,7 +21,7 @@ const Order = () => {
                 // Reload the page when the connected account changes
                 window.location.reload();
         };
-        
+
         const [currentaccount, setCurrentaccount] = useState("");
         const [loader, setloader] = useState(true);
         const [SupplyChain, setSupplyChain] = useState();
@@ -155,6 +155,7 @@ const Order = () => {
                 <table className="w-full mt-4 border border-gray-200">
                         <thead>
                         <tr className="bg-gray-100">
+                                <th className="border border-gray-200 px-4 py-2 text-2xl">Medicine ID</th>
                                 <th className="border border-gray-200 px-4 py-2 text-2xl">Name</th>
                                 <th className="border border-gray-200 px-4 py-2 text-2xl">Date of Expiry</th>
                                 <th className="border border-gray-200 px-4 py-2 text-2xl">Description</th>
@@ -164,6 +165,7 @@ const Order = () => {
                         <tbody>
                         {MED && MED.map((med, index) => (
                                 <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : ''}>
+                                <td className="border border-gray-200 px-4 py-2 text-2xl">{med.id}</td>
                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{med.name}</td>
                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{med.expDate}</td>
                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{med.description}</td>

@@ -5,7 +5,6 @@ import PharmaTrustABI from "../artifacts/PharmaTrust.json"
 const SupplyRm = () => {
     const [medicineID, setMedicineID] = useState('');
     const [description, setDescription] = useState('');
-
     const [currentaccount, setCurrentaccount] = useState("");
     const [loader, setloader] = useState(true);
     const [Data, setData] = useState();
@@ -16,7 +15,20 @@ const SupplyRm = () => {
     useEffect(() => {
         loadWeb3();
         loadBlockchaindata();
-    }, [])
+
+        // Listen for account changes in MetaMask
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+
+        // Cleanup function to remove the event listener
+        return () => {
+                window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+                };
+        }, [])
+
+        const handleAccountsChanged = (accounts) => {
+                // Reload the page when the connected account changes
+                window.location.reload();
+        };
 
     const loadWeb3 = async () => {
         if (window.ethereum) {
@@ -69,6 +81,7 @@ const SupplyRm = () => {
         catch (err) {
             alert("An error occured!!!")
         }
+        window.location.reload();
     }
 
     const handleMedicineID = (e) => {
@@ -108,7 +121,7 @@ const SupplyRm = () => {
                                 />
                     </div>
             </div>
-            <button className='bg-blue-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-blue-600 text-3xl'>Supply</button>
+            <button className='bg-blue-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-blue-600 text-3xl' onClick={handlerSubmitRMSsupply}>Supply</button>
         </div>
     );
 }
