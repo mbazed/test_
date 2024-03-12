@@ -10,6 +10,9 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
         const navigate=useNavigate();
 
+        const handleTracking = () => {
+                navigate('/track');
+         };
         const handleGovernmentClick = () => {
                       navigate('/government');
         };
@@ -78,16 +81,7 @@ const Home = () => {
                         {/* Container for Consumer */}
                         <div className="p-8 rounded-md shadow-md mr-8 ">
                                 <h1 className="text-7xl font-bold mb-36 text-violet-400">Are you a Consumer ?</h1>
-                                <label className="block text-gray-700 mb-6 text-4xl">Enter Medicine ID</label>
-                                <input
-                                className="border border-gray-300 rounded-md p-2 w-full mb-6 text-4xl"
-                                id="medicineID"
-                                type="text"
-                                onChange={handleMedicineID}
-                                placeholder="Medicine ID"
-                                required
-                                />
-                                <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 text-4xl">Track</button>
+                                <button className="bg-blue-500 text-white px-6 py-4 rounded-md hover:bg-blue-600 text-5xl" onClick={handleTracking}>Track Medicine</button>
                         </div>
 
                         {/* Container for Stakeholders */}
