@@ -122,6 +122,28 @@ const DenyRm = () => {
                         </div>
                 </div>
                 <button className='bg-red-500 text-white px-6 py-3 rounded-md mt-8 hover:bg-red-600 text-3xl' onClick={handlerDenyRMSsupply}>Deny</button>
+                <table className="w-full mt-4 border border-gray-200">
+                                <thead>
+                                <tr className="bg-gray-100">
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl">Medicine ID</th>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl">Name</th>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl">Date of Expiry</th>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl">Description</th>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl">Current Stage</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {MED && Object.values(MED).map((med, index) => (
+                                        <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : ''}>
+                                        <td className="border border-gray-200 px-4 py-2 text-2xl">{med.id}</td>
+                                        <td className="border border-gray-200 px-4 py-2 text-2xl">{med.name}</td>
+                                        <td className="border border-gray-200 px-4 py-2 text-2xl">{med.expDate}</td>
+                                        <td className="border border-gray-200 px-4 py-2 text-2xl">{med.description}</td>
+                                        <td className="border border-gray-200 px-4 py-2 text-2xl">{MedStage[index]}</td>
+                                        </tr>
+                                ))}
+                                </tbody>
+                        </table>
             </div>
         );
 }

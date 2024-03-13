@@ -118,7 +118,7 @@ const Tracker = () => {
                     window.alert('The smart contract is not deployed to current network')
                 }
         }
-
+        
         const handlerSubmit = async (event) => {
                 event.preventDefault();
                 var ctr = await Data.methods.medicineCount().call();
@@ -157,6 +157,7 @@ const Tracker = () => {
                                 <table className="w-full mt-4 border border-gray-200">
                                         <thead className='bg-gray-100'>
                                         <tr>
+                                                <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Medicine ID</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stage</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder Type</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder ID</th>
@@ -166,6 +167,7 @@ const Tracker = () => {
                                         </thead>
                                         <tbody>
                                         <tr className='bg-white'>
+                                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Sold</td>
                                                         <td className= "border border-gray-200 px-4 py-2 text-2xl">Retailer</td>
                                                         <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RETid}</td>
@@ -173,6 +175,7 @@ const Tracker = () => {
                                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{RET[MED[medicineID].RETid].place}</td>
                                                 </tr>
                                         <tr className='bg-gray-100'>
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Retail</td>
                                                         <td className= "border border-gray-200 px-4 py-2 text-2xl">Retailer</td>
                                                         <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RETid}</td>
@@ -180,6 +183,7 @@ const Tracker = () => {
                                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{RET[MED[medicineID].RETid].place}</td>
                                                 </tr>
                                         <tr className="bg-white">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Distribution</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Distributor</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].DISTid}</td>
@@ -187,6 +191,7 @@ const Tracker = () => {
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{DIS[MED[medicineID].DISTid].place}</td>
                                         </tr>
                                         <tr className="bg-gray-100">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturing</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturer</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].MANid}</td>
@@ -194,6 +199,7 @@ const Tracker = () => {
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MAN[MED[medicineID].MANid].place}</td>
                                         </tr>
                                         <tr className="bg-white">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw material Supplying</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw Material Supplier</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RMSid}</td>
@@ -210,6 +216,7 @@ const Tracker = () => {
                         <table className="w-full mt-4 border border-gray-200">
                                 <thead className='bg-gray-100'>
                                 <tr>
+                                <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Medicine ID</th>
                                         <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stage</th>
                                         <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder Type</th>
                                         <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder ID</th>
@@ -219,6 +226,8 @@ const Tracker = () => {
                                 </thead>
                                 <tbody>
                                 <tr className='bg-gray-100'>
+                                        
+                                <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Retail</td>
                                                 <td className= "border border-gray-200 px-4 py-2 text-2xl">Retailer</td>
                                                 <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RETid}</td>
@@ -226,6 +235,7 @@ const Tracker = () => {
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{RET[MED[medicineID].RETid].place}</td>
                                         </tr>
                                 <tr className="bg-white">
+                                <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Distribution</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Distributor</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].DISTid}</td>
@@ -233,6 +243,7 @@ const Tracker = () => {
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{DIS[MED[medicineID].DISTid].place}</td>
                                 </tr>
                                 <tr className="bg-gray-100">
+                                <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturing</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturer</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].MANid}</td>
@@ -240,6 +251,7 @@ const Tracker = () => {
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{MAN[MED[medicineID].MANid].place}</td>
                                 </tr>
                                 <tr className="bg-white">
+                                <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Raw material Supplying</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">Raw Material Supplier</td>
                                         <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RMSid}</td>
@@ -256,6 +268,7 @@ const Tracker = () => {
                                 <table className="w-full mt-4 border border-gray-200">
                                         <thead className='bg-gray-100'>
                                         <tr>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Medicine ID</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stage</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder Type</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder ID</th>
@@ -265,6 +278,7 @@ const Tracker = () => {
                                         </thead>
                                         <tbody>
                                         <tr className="bg-white">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Distribution</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Distributor</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].DISTid}</td>
@@ -272,6 +286,7 @@ const Tracker = () => {
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{DIS[MED[medicineID].DISTid].place}</td>
                                         </tr>
                                         <tr className="bg-gray-100">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturing</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturer</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].MANid}</td>
@@ -279,6 +294,7 @@ const Tracker = () => {
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MAN[MED[medicineID].MANid].place}</td>
                                         </tr>
                                         <tr className="bg-white">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw material Supplying</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw Material Supplier</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RMSid}</td>
@@ -296,6 +312,7 @@ const Tracker = () => {
                                 <table className="w-full mt-4 border border-gray-200">
                                         <thead className='bg-gray-100'>
                                         <tr>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Medicine ID</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stage</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder Type</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder ID</th>
@@ -305,6 +322,7 @@ const Tracker = () => {
                                         </thead>
                                         <tbody>
                                        <tr className="bg-gray-100">
+                                       <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturing</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Manufacturer</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].MANid}</td>
@@ -312,6 +330,7 @@ const Tracker = () => {
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MAN[MED[medicineID].MANid].place}</td>
                                         </tr>
                                         <tr className="bg-white">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw material Supplying</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw Material Supplier</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RMSid}</td>
@@ -329,6 +348,7 @@ const Tracker = () => {
                         <table className="w-full mt-4 border border-gray-200">
                                         <thead className='bg-gray-100'>
                                         <tr>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Medicine ID</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stage</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder Type</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder ID</th>
@@ -338,6 +358,7 @@ const Tracker = () => {
                                         </thead>
                                         <tbody>
                                         <tr className="bg-white">
+                                        <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw material Supplying</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Raw Material Supplier</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].RMSid}</td>
@@ -354,6 +375,7 @@ const Tracker = () => {
                                 <table className="w-full mt-4 border border-gray-200">
                                         <thead className='bg-gray-100'>
                                         <tr>
+                                        <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Medicine ID</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stage</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder Type</th>
                                                 <th className="border border-gray-200 px-4 py-2 text-2xl text-center">Stakeholder ID</th>
@@ -363,6 +385,7 @@ const Tracker = () => {
                                         </thead>
                                         <tbody className="bg-white divide-y divide-gray-200">
                                       <tr className="bg-white">
+                                      <td className= "border border-gray-200 px-4 py-2 text-2xl">{MED[medicineID].id}</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Medicine Proccesing</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Processing</td>
                                                 <td className="border border-gray-200 px-4 py-2 text-2xl">Processing</td>
