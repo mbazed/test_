@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header.jsx'
 import Home from './components/home/Home.jsx'
+import Roles from './components/home/Roles.jsx'
 import Manufacturer from './components/stakeholders/Manufacturer.jsx';
 import Retailers from './components/stakeholders/Retailers.jsx';
 import Rms from './components/stakeholders/Rms.jsx';
@@ -24,6 +25,7 @@ function App() {
                 <Header />
                 <Routes>
                         <Route path='/' Component={Home} />
+                        <Route path='/Roles' Component={Roles} />
                         <Route path='/government' Component={Government} />
                         <Route path='/register' Component={Register} />
                         <Route path='/rms' Component={Rms} />

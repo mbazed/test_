@@ -2,19 +2,20 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <nav className=" bg-gradient-to-r from-[#0D0D0D] to-[#03396c]    p-8  flex flex-col md:flex-row items-center justify-between   w-full">
+    <div className="p-9 flex flex-col md:flex-row items-center justify-between bg-white w-full">
       <div>
-        <a href="/" className="text-white font-bold tracking-wider text-4xl hover:text-white">PHARMATRUST</a>
+        <a href="/" className="text-white font-bold tracking-wider text-6xl hover:text-jade">PHARMATRUST</a>
       </div>
       <div className="font-serif flex items-center space-x-4 mt-4 md:mt-0"> 
-        <ul className="flex space-x-4">
-          <li><a href="/" className="text-white text-2xl hover:text-gray-400">Roles</a></li>
+        <ul className="flex space-x-8 text-4xl">
+        <li><a href="/" className="text-white hover:text-jade">Home</a></li>
+          <li><a href="/Roles" className="text-white text-4xl hover:text-jade">Roles</a></li>
           {/* <li><a href="/features" className="text-2xl text-white hover:text-gray-400">Track Medicine</a></li> */}
-          <li><a href="/" className="text-2xl text-white hover:text-gray-400">FAQ'S</a></li>
+          <li><a href="/" className="text-white hover:text-jade">FAQ'S</a></li>
         </ul>
-        <button className="text-2xl mt-4 md:mt-0 hover:bg-white hover:text-sky-700 text-white font-bold py-2 px-4 rounded">Connect Wallet</button>
+        {/* <button className="text-4xl mt-4 md:mt-0 hover:bg-white hover:text-jade text-white font-bold py-2 px-4 rounded">Connect Wallet</button> */}
       </div>
-    </nav>
+    </div>
   );
 }
 

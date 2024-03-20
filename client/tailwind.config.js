@@ -5,7 +5,14 @@ module.exports = {
     './public/index.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'jade': '#8ad7f8',
+        'heading': '#207da8',
+        'button': '#72badb',
+        'hoverButton': '#005d3a',
+      },
+    },
   },
   plugins: [],
 }
