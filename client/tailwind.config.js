@@ -7,10 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'jade': '#8ad7f8',
-        'heading': '#207da8',
-        'button': '#72badb',
+        'jade': '#147196',
+        'heading': '#30a6d9',
+        'button': '#d0d6d9',
         'hoverButton': '#005d3a',
+        'headerHover': '#021c2b',
       },
     },
   },
