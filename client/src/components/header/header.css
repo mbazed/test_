@@ -1,0 +1,86 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #004346;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.brand {
+  color: white;
+  font-size: 2rem;
+  font-family: "Quitars", sans-serif;
+  font-weight: 900;
+}
+
+.links {
+  margin-left: auto; /* Move the links to the right */
+}
+
+.links a {
+  margin-left: 10px;
+  margin-right: 20px;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.nav-wallet {
+  border: 3px solid #000;
+  border-radius: 15px;
+  padding: 5px 10px;
+  background-color: #09bc8a;
+  box-shadow: 3px 2px 0 rgb(0, 0, 0);
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+.nav-wallet:hover {
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@font-face {
+  font-family: "kincrev";
+  src: url(../../../src/assets/fonts/kincrev-l3rpg.otf);
+}
+
+@font-face {
+  font-family: "geist";
+  src: url(../../../src/assets/fonts/Geist-Black.otf);
+  src: url(../../../src/assets/fonts/Geist-Bold.otf);
+  src: url(../../../src/assets/fonts/Geist-Light.otf);
+  src: url(../../../src/assets/fonts/Geist-Medium.otf);
+  src: url(../../../src/assets/fonts/Geist-Regular.otf);
+  src: url(../../../src/assets/fonts/Geist-SemiBold.otf);
+  src: url(../../../src/assets/fonts/Geist-Thin.otf);
+  src: url(../../../src/assets/fonts/Geist-UltraBlack.otf);
+  src: url(../../../src/assets/fonts/Geist-UltraLight.otf);
+}
+
+@font-face {
+  font-family: "Quitars";
+  src: url(../../../src/assets/fonts/Quitars.otf);
+}
